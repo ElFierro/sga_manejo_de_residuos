@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "e03f2e23-3307-4317-ad43-502a52b366e3",
+		"name": "User-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34420248"
+	},
+	"item": [
+		{
+			"name": "FindAll",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "clientId",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "clientId",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"14\",\r\n  \"nameUser\": \"141\",\r\n  \"email\": \"141@gmail.com\",\r\n  \"country\": \"Colombia\",\r\n  \"city\": \"Tunja\",\r\n  \"address\": \"Cra 4 barrio la calera\",\r\n  \"password\": \"Remi_gCVXVDSFfgRiscanevo8\",\r\n  \"role\": \"sGuperajhjhjdministrador\",\r\n  \"dateAdmission\": \"2024-04-11T09:12:33.001Z\",\r\n  \"phone\": 3223412312,\r\n  \"clientSecret\":\"14\",\r\n  \"clientId\": \"14\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/user/6640d628e57666139a50331e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"6640d628e57666139a50331e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "clientId",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"15\",\r\n  \"nameUser\": \"16\",\r\n  \"email\": \"16@gmail.com\",\r\n  \"country\": 1222,\r\n  \"city\": 43545,\r\n  \"address\": 453,\r\n  \"password\": \"Remi_gCVXVDSFfgRiscanevo8\",\r\n  \"role\": \"sGuperajhjhjdministrador\",\r\n  \"dateAdmission\": \"2024-04-11T09:12:33.001Z\",\r\n  \"phone\": 3223412312,\r\n  \"clientSecret\":\"15\",\r\n  \"clientId\": \"15\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer dasddsad",
+						"type": "text"
+					},
+					{
+						"key": "clientId",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n        \"id\": \"66405b2312499e63050eb9a9\",\r\n        \"name\": \"142\",\r\n        \"nameUser\": \"13\",\r\n        \"email\": \"13e@gmail.com\",\r\n        \"country\": \"Colombia\",\r\n        \"city\": \"Tunja\",\r\n        \"password\":\"fsdfsdfs\",\r\n        \"address\": \"Cra 4 barrio la calera\",\r\n        \"role\": \"sGuperajhjhjdministrador\",\r\n        \"phone\": 3223412312,\r\n        \"clientId\": \"14\",\r\n        \"clientSecret\": \"14\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "clientId",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"14\",\r\n  \"nameUser\": \"141\",\r\n  \"email\": \"141@gmail.com\",\r\n  \"country\": \"Colombia\",\r\n  \"city\": \"Tunja\",\r\n  \"address\": \"Cra 4 barrio la calera\",\r\n  \"password\": \"Remi_gCVXVDSFfgRiscanevo8\",\r\n  \"role\": \"sGuperajhjhjdministrador\",\r\n  \"dateAdmission\": \"2024-04-11T09:12:33.001Z\",\r\n  \"phone\": 3223412312,\r\n  \"clientSecret\":\"14\",\r\n  \"clientId\": \"14\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/user/66405b2312499e63050eb9a9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"66405b2312499e63050eb9a9"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
