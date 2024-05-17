@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.edu.usa.sga.models.MultipleResponse;
-import co.edu.usa.sga.models.Response;
 import co.edu.usa.sga.models.ResponseDetails;
 import co.edu.usa.sga.models.SingleResponse;
 import co.edu.usa.sga.utilities.constans.ResponseMessages;
@@ -22,7 +21,7 @@ public class WasteService {
     
     private static final Logger log = LoggerFactory.getLogger(WasteService.class);
     
-    public Response save(Waste waste) throws ResponseDetails{
+    public SingleResponse save(Waste waste) throws ResponseDetails{
         try {
             if(waste.getId()!=null){
               //validate that the id is not present in the body of the request
@@ -47,7 +46,7 @@ public class WasteService {
         }
     }
     
-    public Response findAll() throws ResponseDetails {
+    public MultipleResponse findAll() throws ResponseDetails {
         MultipleResponse response = new MultipleResponse();
         try {
         	//search all waste records
@@ -67,7 +66,7 @@ public class WasteService {
         }
     }
 
-    public Response findById(String id) throws ResponseDetails{
+    public SingleResponse findById(String id) throws ResponseDetails{
     	SingleResponse response = new SingleResponse();
         try {
         	//search for the record of a specific waste
@@ -88,7 +87,28 @@ public class WasteService {
         }
     }
     
-    public Response update(Waste waste) throws ResponseDetails{
+    public SingleResponse getByTypeWaste(String id) throws ResponseDetails{
+    	SingleResponse response = new SingleResponse();
+        try {
+        	//search for the record of a specific waste
+        	Optional<Waste> waste = repository.findById(id);
+        	//Validate if there is any record with that id
+            if(waste.isEmpty()){
+              throw new ResponseDetails(ResponseMessages.CODE_404,ResponseMessages.ERROR_404);
+            }else{
+            	//create successful response
+                response.setData(waste.get());
+                response.getResponseDetails().setCode(ResponseMessages.CODE_200);
+                response.getResponseDetails().setMessage(ResponseMessages.ERROR_200);
+                return response;
+            }
+        } catch (ResponseDetails e) {
+            log.error(e.getCode(),e.getMessage(),e);
+            throw e;
+        }
+    }
+    
+    public SingleResponse update(Waste waste) throws ResponseDetails{
         try {
         	//validates if the id exists in the body of the request
             if(waste.getId()==null){
@@ -112,7 +132,7 @@ public class WasteService {
         }
     }
     
-    public Response deleteById(String idWaste) throws ResponseDetails{
+    public SingleResponse deleteById(String idWaste) throws ResponseDetails{
    	 try {
             if(idWaste==null){
               throw new ResponseDetails(ResponseMessages.CODE_400,ResponseMessages.ERROR_400);

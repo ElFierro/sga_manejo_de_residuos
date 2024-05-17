@@ -129,19 +129,19 @@ public class ResponseMessages {
 	
 	public static final String USER_DELETE = "El usuario se elimino exitosamente.";
 	
-	public static final String ERROR_EMAIL_NULL = "El valor del correo electronico no puede ser vacio o nulo.";
-	
-	public static final String ERROR_PASSWORD_NULL= "El valor de la contraseña no puede ser vacio o nulo.";
-	
-	public static final String ERROR_NAMEUSER_NULL = "El valor del nombre de usuario no puede ser vacio o nulo.";
-	
 	public static final String ERROR_EMAIL_EXISTING= "El correo electronico: 'email' ya esta registrado.";
-	public static final String ERROR_USERNAME_EXISTING= "El nombre de usuario: 'nameUser' ya existe.";
+	public static final String ERROR_EMAIL_REQUIRED="El correo electronico es requerido.";
+	
+	public static final String ERROR_PASSWORD_REQUIRED= "Debe especifique un valor para la contraseña.";
 	
 	public static final String ERROR_NO_RECORDS= "No existen registros.";
 	
 	public static final String ERROR_VALID_ROL = "Este rol de usuario no es valido";
-	public static final String ERROR_ROL_NULL = "El rol de usuario no puede ser vacio o nulo.";
+	public static final String ERROR_ROL_REQUIRED="Especifique el rol del usuario.";
+	
+	public static final String ERROR_TYPE_WASTE_REQUIRED ="Indique el tipo de residuo";
+	public static final String ERROR_CLASSIFICATION_REQUIRED ="La clasificacion de residuos es obligatoria";
+	public static final String ERROR_WEIGHT_REQUIRED  ="Especifique el peso";
 	
     // *** STATUS *****//
 	public static enum STATUS {

@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ import co.edu.usa.sga.utilities.constans.ResponseMessages;
 import co.edu.usa.talentotech.sga.model.Waste;
 import co.edu.usa.talentotech.sga.service.ErrorService;
 import co.edu.usa.talentotech.sga.service.WasteService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/waste")
@@ -31,10 +33,11 @@ public class WasteController {
 
 
 	    @PostMapping("/")
-	    public Response save(@RequestBody Waste user) throws ResponseDetails {
+	    public SingleResponse save( @RequestBody Waste waste) throws ResponseDetails {
 	        SingleResponse response = new SingleResponse();
+
 	        try {
-	            response = (SingleResponse) service.save( user);
+	            response = service.save(waste);
 	        } catch (ResponseDetails e) {
 	            response.setResponseDetails(e);
 	        }
@@ -42,10 +45,10 @@ public class WasteController {
 	    } 
 	    
 	    @GetMapping("/")
-	    public Response fidAll() throws ResponseDetails {
+	    public MultipleResponse fidAll() throws ResponseDetails {
 	        MultipleResponse response = new MultipleResponse();
 	        try {
-	            response = (MultipleResponse) service.findAll();
+	            response = service.findAll();
 	        } catch (ResponseDetails e) {
 	        	response.setResponseDetails(e);
 	        }
@@ -53,11 +56,23 @@ public class WasteController {
 	    }
 	    
 	    @GetMapping("/{id}")
-	    public Response getById( @PathVariable String id) 
+	    public SingleResponse getById( @PathVariable String id) 
 	            throws ResponseDetails {
 	        SingleResponse response = new SingleResponse();
 	        try {
-	            response = (SingleResponse)service.findById(id);
+	            response = service.findById(id);
+	        } catch (ResponseDetails e) {
+	        	response.setResponseDetails(e);
+	        }
+	        return response;
+	    }
+	    
+	    @GetMapping("/{typeWaste}")
+	    public SingleResponse getByTypeWaste( @PathVariable String typeWaste) 
+	            throws ResponseDetails {
+	        SingleResponse response = new SingleResponse();
+	        try {
+	            response = service.getByTypeWaste(typeWaste);
 	        } catch (ResponseDetails e) {
 	        	response.setResponseDetails(e);
 	        }
@@ -65,10 +80,10 @@ public class WasteController {
 	    }
 	    
 	    @DeleteMapping("/{id}")
-	    public Response deleteById( @PathVariable String id) throws ResponseDetails {
+	    public SingleResponse deleteById( @PathVariable String id) throws ResponseDetails {
 	        SingleResponse response = new SingleResponse();
 	        try {
-	            response = (SingleResponse) service.deleteById(id);
+	            response = service.deleteById(id);
 	        } catch (ResponseDetails e) {
 	            response.setResponseDetails(e);
 	        }
@@ -76,7 +91,7 @@ public class WasteController {
 	    }    
 	    
 	    @PutMapping("/")
-	    public Response update( @RequestBody Waste waste) throws ResponseDetails {
+	    public SingleResponse update( @RequestBody Waste waste) throws ResponseDetails {
 	            SingleResponse response = new SingleResponse();
 	        try {
 	            response = (SingleResponse) service.update(waste);

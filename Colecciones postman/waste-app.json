@@ -1,0 +1,289 @@
+{
+	"info": {
+		"_postman_id": "bcdb61fc-05a8-48d6-a8a3-040f65d0855c",
+		"name": "waste-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34420248"
+	},
+	"item": [
+		{
+			"name": "FindAllWaste",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "clientId",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8181/api/v1/waste/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"api",
+						"v1",
+						"waste",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindWasteById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "clientId",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"14\",\r\n  \"nameUser\": \"141\",\r\n  \"email\": \"141@gmail.com\",\r\n  \"country\": \"Colombia\",\r\n  \"city\": \"Tunja\",\r\n  \"address\": \"Cra 4 barrio la calera\",\r\n  \"password\": \"Remi_gCVXVDSFfgRiscanevo8\",\r\n  \"role\": \"sGuperajhjhjdministrador\",\r\n  \"dateAdmission\": \"2024-04-11T09:12:33.001Z\",\r\n  \"phone\": 3223412312,\r\n  \"clientSecret\":\"14\",\r\n  \"clientId\": \"14\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8181/api/v1/waste/6643864f8528ad7857171af1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"api",
+						"v1",
+						"waste",
+						"6643864f8528ad7857171af1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindWasteByType",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "clientId",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"14\",\r\n  \"nameUser\": \"141\",\r\n  \"email\": \"141@gmail.com\",\r\n  \"country\": \"Colombia\",\r\n  \"city\": \"Tunja\",\r\n  \"address\": \"Cra 4 barrio la calera\",\r\n  \"password\": \"Remi_gCVXVDSFfgRiscanevo8\",\r\n  \"role\": \"sGuperajhjhjdministrador\",\r\n  \"dateAdmission\": \"2024-04-11T09:12:33.001Z\",\r\n  \"phone\": 3223412312,\r\n  \"clientSecret\":\"14\",\r\n  \"clientId\": \"14\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/user/6640d628e57666139a50331e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"6640d628e57666139a50331e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateWaste",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "clientId",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"155fe4u8d\",\r\n  \"typeWaste\": \"Residuos aprovechables\",\r\n  \"classification\": \"Carton\",\r\n  \"recyclable\" :  true,\r\n  \"weight\": \"hhh\",\r\n  \"finalDisposition\": \"Fabricas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8181/api/v1/waste/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"api",
+						"v1",
+						"waste",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateWaste",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer dasddsad",
+						"type": "text"
+					},
+					{
+						"key": "clientId",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n        \"id\": \"6643864f8528ad7857171af1\",\r\n        \"name\": \"15e48ds\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8181/api/v1/waste/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"api",
+						"v1",
+						"waste",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteWaste",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "clientId",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"14\",\r\n  \"nameUser\": \"141\",\r\n  \"email\": \"141@gmail.com\",\r\n  \"country\": \"Colombia\",\r\n  \"city\": \"Tunja\",\r\n  \"address\": \"Cra 4 barrio la calera\",\r\n  \"password\": \"Remi_gCVXVDSFfgRiscanevo8\",\r\n  \"role\": \"sGuperajhjhjdministrador\",\r\n  \"dateAdmission\": \"2024-04-11T09:12:33.001Z\",\r\n  \"phone\": 3223412312,\r\n  \"clientSecret\":\"14\",\r\n  \"clientId\": \"14\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8181/api/v1/waste/6643864f8528ad7857171af1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"api",
+						"v1",
+						"waste",
+						"6643864f8528ad7857171af1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

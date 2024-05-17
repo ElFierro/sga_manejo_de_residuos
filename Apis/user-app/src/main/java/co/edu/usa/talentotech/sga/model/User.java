@@ -28,10 +28,6 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper=false)
 @NoArgsConstructor
 @ToString
-@JsonIgnoreProperties(value = {
-	    "createdDate",
-	    "lastModifiedDate"
-	})
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 
@@ -43,19 +39,19 @@ public class User extends Records<User> implements java.io.Serializable{
 	
 	private String name;
 	
-	@NotNull(message = ResponseMessages.ERROR_EMAIL_NULL)
-	@NotBlank(message = ResponseMessages.ERROR_EMAIL_NULL)
+	@NotNull(message = ResponseMessages.ERROR_EMAIL_REQUIRED)
+	@NotBlank(message = ResponseMessages.ERROR_EMAIL_REQUIRED)
 	@Email
 	private String email;
 	
 	private String city;
 	
-	@NotNull(message = ResponseMessages.ERROR_PASSWORD_NULL)
-	@NotBlank(message = ResponseMessages.ERROR_PASSWORD_NULL)
+	@NotNull(message = ResponseMessages.ERROR_PASSWORD_REQUIRED)
+	@NotBlank(message = ResponseMessages.ERROR_PASSWORD_REQUIRED)
 	private String password;
 	
-	@NotNull(message = ResponseMessages.ERROR_ROL_NULL)
-	@NotBlank(message = ResponseMessages.ERROR_ROL_NULL)
+	@NotNull(message = ResponseMessages.ERROR_ROL_REQUIRED)
+	@NotBlank(message = ResponseMessages.ERROR_ROL_REQUIRED)
 	private String rolUser;
 	
 	private String clientId;
