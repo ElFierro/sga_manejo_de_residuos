@@ -35,7 +35,7 @@ import lombok.ToString;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 
-@Document(value = "User")
+@Document(value = "user")
 public class User extends Records<User> implements java.io.Serializable{
 	private static final long serialVersionUID = 5L;
 	@Id
@@ -43,20 +43,12 @@ public class User extends Records<User> implements java.io.Serializable{
 	
 	private String name;
 	
-	@NotNull(message = ResponseMessages.ERROR_NAMEUSER_NULL)
-	@NotBlank(message = ResponseMessages.ERROR_NAMEUSER_NULL)
-	private String nameUser;
-	
 	@NotNull(message = ResponseMessages.ERROR_EMAIL_NULL)
 	@NotBlank(message = ResponseMessages.ERROR_EMAIL_NULL)
 	@Email
 	private String email;
 	
-	private String country;
-	
 	private String city;
-	
-	private String address;
 	
 	@NotNull(message = ResponseMessages.ERROR_PASSWORD_NULL)
 	@NotBlank(message = ResponseMessages.ERROR_PASSWORD_NULL)
@@ -66,14 +58,7 @@ public class User extends Records<User> implements java.io.Serializable{
 	@NotBlank(message = ResponseMessages.ERROR_ROL_NULL)
 	private String rolUser;
 	
-	private Long phone;
-	
-	@NotNull(message = ResponseMessages.ERROR_400)
-	@NotBlank(message = ResponseMessages.ERROR_400)
 	private String clientId;
-	
-	@NotNull(message = ResponseMessages.ERROR_400)
-	@NotBlank(message = ResponseMessages.ERROR_400)
 	
 	private String clientSecret;
 	

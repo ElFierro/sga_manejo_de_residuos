@@ -141,7 +141,7 @@ public class ResponseMessages {
 	public static final String ERROR_NO_RECORDS= "No existen registros.";
 	
 	public static final String ERROR_VALID_ROL = "Este rol de usuario no es valido";
-	public static final String ERROR_ROL_NULL = "Este rol de usuario no puede ser vacio o nulo.";
+	public static final String ERROR_ROL_NULL = "El rol de usuario no puede ser vacio o nulo.";
 	
     // *** STATUS *****//
 	public static enum STATUS {

@@ -4,6 +4,7 @@ import co.edu.usa.sga.models.MultipleResponse;
 import co.edu.usa.sga.models.Response;
 import co.edu.usa.sga.models.ResponseDetails;
 import co.edu.usa.sga.models.SingleResponse;
+import co.edu.usa.sga.utilities.AuthTools;
 import co.edu.usa.sga.utilities.constans.ResponseMessages;
 
 import org.slf4j.Logger;
@@ -37,74 +38,89 @@ public class UserController {
 
 
     @PostMapping("/")
-    public Response save(@RequestHeader("authorization") String token, 
+    public SingleResponse createUser(@RequestHeader("authorization") String token, 
             @RequestHeader("clientId") String clientId, HttpServletRequest requestData,
-            @Valid @RequestBody User user,BindingResult bindingResult) throws ResponseDetails {
-        SingleResponse response = new SingleResponse();
+            @Valid @RequestBody User newUser,BindingResult bindingResult) throws ResponseDetails {
+        SingleResponse responseUser = new SingleResponse();
+        newUser.setClientSecret(AuthTools.GenerarClientId());
+        newUser.setClientId(AuthTools.GenerarClientId());
         if(bindingResult.hasErrors()) {
         	throw new ResponseDetails(ResponseMessages.CODE_400,bindingResult.getFieldError().getDefaultMessage());
         }
         try {
-            response = (SingleResponse) service.save( user);
+        	responseUser = service.createUser(newUser);
         } catch (ResponseDetails e) {
-            response.setResponseDetails(e);
+        	responseUser.setResponseDetails(e);
         }
-        return response;
+        return responseUser;
     }    
 
     @GetMapping("/")
-    public Response fidAll(@RequestHeader("authorization") String token,
+    public MultipleResponse fidAllUsers(@RequestHeader("authorization") String token,
             @RequestHeader("clientId") String clientId, HttpServletRequest requestData) throws ResponseDetails {
-        MultipleResponse response = new MultipleResponse();
+        MultipleResponse responseUsers = new MultipleResponse();
         try {
-            response = (MultipleResponse) service.findAll();
+        	responseUsers = service.fidAllUsers();
         } catch (ResponseDetails e) {
-        	response.setResponseDetails(e);
+        	responseUsers.setResponseDetails(e);
         }
-        return response;
+        return responseUsers;
     }
 
 
     @GetMapping("/{id}")
-    public Response getById(@RequestHeader("authorization") String token, 
+    public SingleResponse getUserById(@RequestHeader("authorization") String token, 
             @RequestHeader("clientId") String clientId, @PathVariable String id) 
             throws ResponseDetails {
-        SingleResponse response = new SingleResponse();
+        SingleResponse responseUser = new SingleResponse();
         try {
-            response = (SingleResponse)service.findById(id);
+        	responseUser = service.getUserById(id);
         } catch (ResponseDetails e) {
-        	response.setResponseDetails(e);
+        	responseUser.setResponseDetails(e);
         }
-        return response;
+        return responseUser;
     }
 
     @DeleteMapping("/{id}")
-    public Response deleteById(@RequestHeader("authorization") String token, 
+    public SingleResponse deleteUserById(@RequestHeader("authorization") String token, 
             @RequestHeader("clientId") String clientId, @PathVariable String id) throws ResponseDetails {
-        SingleResponse response = new SingleResponse();
+        SingleResponse responseUser = new SingleResponse();
         try {
-            response = (SingleResponse) service.deleteById(id);
+        	responseUser = service.deleteUserById(id);
         } catch (ResponseDetails e) {
-            response.setResponseDetails(e);
+        	responseUser.setResponseDetails(e);
         }
-        return response;
+        return responseUser;
     }    
 
     @PutMapping("/")
-    public Response update(@RequestHeader("authorization") String token, 
+    public SingleResponse updateUser(@RequestHeader("authorization") String token, 
             @RequestHeader("clientId") String clientId, HttpServletRequest requestData,
         @Valid @RequestBody User user,BindingResult bindingResult) throws ResponseDetails {
-            SingleResponse response = new SingleResponse();
+            SingleResponse responseUser = new SingleResponse();
             if(bindingResult.hasErrors()) {
             	throw new ResponseDetails(ResponseMessages.CODE_400,bindingResult.getFieldError().getDefaultMessage());
             }
         try {
-            response = (SingleResponse) service.update(user);
+        	responseUser =  service.updateUser(user);
         } catch (ResponseDetails e) {
-            response.setResponseDetails(e);
+        	responseUser.setResponseDetails(e);
         }
-        return response;
-    }    
+        return responseUser;
+    }  
+    
+    @GetMapping("/roles")
+    public MultipleResponse findAllRoles(@RequestHeader("authorization") String token, 
+            @RequestHeader("clientId") String clientId) 
+            throws ResponseDetails {
+    	MultipleResponse responseRoles = new MultipleResponse();
+        try {
+        	responseRoles = service.findAllRoles();
+        } catch (ResponseDetails e) {
+        	responseRoles.setResponseDetails(e);
+        }
+        return responseRoles;
+    }
     
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(BindException.class)
