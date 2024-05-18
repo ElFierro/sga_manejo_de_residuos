@@ -26,7 +26,7 @@ https://github.com/ElFierro/sga_manejo_de_residuos.git
 
 **Ejemplo:**
 
-- Dentro del proyecto en una terminal ejecute el siguiente comando:
+Dentro del proyecto en una terminal ejecute el siguiente comando:
 
 ```
 mvn install
@@ -34,6 +34,7 @@ mvn install
 - Configure el archivo settings.xml 
 
 Para accerder al core debe agregar la ruta y token de acceso en el archivo settings.xml que esta ubicado en la carpeta .../.m2 (Solicitar estas credenciales al administrador del proyecto)
+
 **Ejemplo:**
 ```
  <servers>
@@ -49,17 +50,17 @@ Para accerder al core debe agregar la ruta y token de acceso en el archivo setti
 
 **Ejemplo:**
 
-- En la ruta ...\Apis\user-app ejecutamos en la consola el siguiente comando:
+En la ruta ...\Apis\user-app ejecutamos en la consola el siguiente comando:
 
 ```
 docker build -t spring-userapp-image:1.0 .
 ```
 
-- Ejecute el archivo docker-compose
+Ejecute el archivo docker-compose
 
 **Ejemplo:**
 
-- En la ruta ...\Apis ejecutamos en la consola del cmd el siguiente comando:
+En la ruta ...\Apis ejecutamos en la consola del cmd el siguiente comando:
 
 ```
 Docker-compose up
