@@ -24,18 +24,18 @@ https://github.com/ElFierro/sga_manejo_de_residuos.git
 ```
 - **Instalar maven**
 
-**Ejemplo:**
+Ejemplo:
 
 Dentro del proyecto en una terminal ejecute el siguiente comando:
 
 ```
 mvn install
 ```
-- **Configure el archivo settings.xml **
+- **Configure el archivo settings.xml**
 
 Para accerder al core debe agregar la ruta y token de acceso en el archivo settings.xml que esta ubicado en la carpeta .../.m2 (Solicitar estas credenciales al administrador del proyecto)
 
-**Ejemplo:**
+Ejemplo:
 ```
  <servers>
     <server>
@@ -48,7 +48,7 @@ Para accerder al core debe agregar la ruta y token de acceso en el archivo setti
 
 - **Crear la imagen del microservicio**
 
-**Ejemplo:**
+Ejemplo:
 
 En la ruta ...\Apis\user-app ejecutamos en la consola el siguiente comando:
 
@@ -58,7 +58,7 @@ docker build -t spring-userapp-image:1.0 .
 
 - **Ejecute el archivo docker-compose**
 
-**Ejemplo:**
+Ejemplo:
 
 En la ruta ...\Apis ejecutamos en la consola del cmd el siguiente comando:
 
