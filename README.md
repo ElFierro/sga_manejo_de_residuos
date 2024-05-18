@@ -17,12 +17,12 @@ El microservicio se encarga de gestionar toda la informacion referente al manejo
 
 ### Instalación 🔧
 
-- _Clonar el respositorio
+- Clonar el respositorio
 
 ```
 https://github.com/ElFierro/sga_manejo_de_residuos.git
 ```
-- _Instalar maven
+- Instalar maven
 
 **Ejemplo:**
 
@@ -31,7 +31,7 @@ https://github.com/ElFierro/sga_manejo_de_residuos.git
 ```
 mvn install
 ```
-- _Configure el archivo settings.xml 
+- Configure el archivo settings.xml 
 
 Para accerder al core debe agregar la ruta y token de acceso en el archivo settings.xml que esta ubicado en la carpeta .../.m2 (Solicitar estas credenciales al administrador del proyecto)
 **Ejemplo:**
@@ -45,7 +45,7 @@ Para accerder al core debe agregar la ruta y token de acceso en el archivo setti
   </servers>
 ```
 
-- _Crear la imagen del microservicio
+- Crear la imagen del microservicio
 
 **Ejemplo:**
 
@@ -55,7 +55,7 @@ Para accerder al core debe agregar la ruta y token de acceso en el archivo setti
 docker build -t spring-userapp-image:1.0 .
 ```
 
-- _Ejecute el archivo docker-compose
+- Ejecute el archivo docker-compose
 
 **Ejemplo:**
 
