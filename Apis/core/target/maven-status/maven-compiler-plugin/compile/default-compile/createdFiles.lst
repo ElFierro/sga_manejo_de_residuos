@@ -1,9 +1,0 @@
-co\edu\usa\sga\utilities\constans\Scheme.class
-co\edu\usa\sga\utilities\constans\ResponseMessages$STATUS.class
-co\edu\usa\sga\models\Records.class
-co\edu\usa\sga\utilities\AuthTools.class
-co\edu\usa\sga\models\MultipleResponse.class
-co\edu\usa\sga\models\SingleResponse.class
-co\edu\usa\sga\models\Response.class
-co\edu\usa\sga\models\ResponseDetails.class
-co\edu\usa\sga\utilities\constans\ResponseMessages.class

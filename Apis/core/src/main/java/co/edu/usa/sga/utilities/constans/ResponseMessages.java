@@ -132,7 +132,7 @@ public class ResponseMessages {
 	public static final String ERROR_EMAIL_EXISTING= "El correo electronico: 'email' ya esta registrado.";
 	public static final String ERROR_EMAIL_REQUIRED="El correo electronico es requerido.";
 	
-	public static final String ERROR_PASSWORD_REQUIRED= "Debe especifique un valor para la contraseña.";
+	public static final String ERROR_PASSWORD_REQUIRED= "Debe especificar un valor para la contraseña.";
 	
 	public static final String ERROR_NO_RECORDS= "No existen registros.";
 	

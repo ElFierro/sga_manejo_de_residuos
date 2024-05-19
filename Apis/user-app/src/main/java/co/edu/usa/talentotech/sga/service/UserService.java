@@ -4,10 +4,7 @@ import co.edu.usa.sga.models.*;
 import co.edu.usa.sga.utilities.constans.ResponseMessages;
 
 import org.springframework.stereotype.Service;
-
-import co.edu.usa.talentotech.sga.model.Rol;
 import co.edu.usa.talentotech.sga.model.User;
-import co.edu.usa.talentotech.sga.repository.RolRepository;
 import co.edu.usa.talentotech.sga.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -25,9 +22,6 @@ public class UserService implements EncriptService {
 
 	@Autowired
 	private UserRepository userRespository;
-
-	@Autowired
-	private RolRepository rolRepository;
 
 	private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
@@ -48,8 +42,6 @@ public class UserService implements EncriptService {
 			validateEmail(user.getEmail());
 			validateClientId(user.getClientId());
 			validateClientSecret(user.getClientSecret());
-			// Validate if the role is valid
-			validateRol(user.getRolUser());
 			// encrypt password
 			user.setPassword(encrypPassword(user.getPassword()));
 			//Create user
@@ -175,37 +167,7 @@ public class UserService implements EncriptService {
 		}
 	}
 
-	/**
-	 * searches for all and returns a list of all existing user roles
-	 * 
-	 * @return Response
-	 * @throws ResponseDetails
-	 */
-	public MultipleResponse findAllRoles() throws ResponseDetails {
-		try {
-			// search all existing roles
-			List<Rol> roles =rolRepository.findAll();
-			// validate that user collection contains data
-			if (roles == null || roles.isEmpty()) {
-				throw new ResponseDetails(ResponseMessages.CODE_404, ResponseMessages.ERROR_NO_RECORDS);
-			} 
-			// create successful response
-			return multipleReponsRoles(roles,ResponseMessages.CODE_200,ResponseMessages.ERROR_200);
-		} catch (ResponseDetails e) {
-			log.error(e.getCode(), e.getMessage(), e);
-			throw e;
-		}
-	}
-	
 	public MultipleResponse multipleReponsUser(List<User> data, String code, String message) throws ResponseDetails {
-		MultipleResponse responseUsers = new MultipleResponse();
-		responseUsers.setData(data);
-		responseUsers.getResponseDetails().setCode(code);
-		responseUsers.getResponseDetails().setMessage(message);
-		return responseUsers;
-	}
-	
-	public MultipleResponse multipleReponsRoles(List<Rol> data, String code, String message) throws ResponseDetails {
 		MultipleResponse responseUsers = new MultipleResponse();
 		responseUsers.setData(data);
 		responseUsers.getResponseDetails().setCode(code);
@@ -220,7 +182,7 @@ public class UserService implements EncriptService {
 		responseUser.getResponseDetails().setMessage(message);
 		return responseUser;
 	}
-
+	
 	public void userIdExists(String userId) throws ResponseDetails {
 		if (userId != null) {
 			throw new ResponseDetails(ResponseMessages.CODE_400, ResponseMessages.ERROR_400);
@@ -257,12 +219,7 @@ public class UserService implements EncriptService {
 			throw new ResponseDetails(ResponseMessages.CODE_400, ResponseMessages.ERROR_USER_CREATED);
 		}
 	}
-
-	public void validateRol(String idRol) throws ResponseDetails {
-		if (rolRepository.findById(idRol).isEmpty()) {
-			throw new ResponseDetails(ResponseMessages.CODE_400, ResponseMessages.ERROR_VALID_ROL);
-		}
-	}
+	
 	
 	public void ValidateUserIsEmpty(Optional<User> user) throws ResponseDetails {
 		if (user.isEmpty()) {
@@ -282,9 +239,7 @@ public class UserService implements EncriptService {
 		if (newUser.getEmail() != null) {
 			existingUser.setEmail(newUser.getEmail());
 		}
-		if (newUser.getRolUser() != null) {
-			existingUser.setRolUser(newUser.getRolUser());
-		}
+		
 		return existingUser;
 	}
 

@@ -13,7 +13,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -50,10 +51,6 @@ public class User extends Records<User> implements java.io.Serializable{
 	@NotBlank(message = ResponseMessages.ERROR_PASSWORD_REQUIRED)
 	private String password;
 	
-	@NotNull(message = ResponseMessages.ERROR_ROL_REQUIRED)
-	@NotBlank(message = ResponseMessages.ERROR_ROL_REQUIRED)
-	private String rolUser;
-	
 	private String clientId;
 	
 	private String clientSecret;
@@ -66,4 +63,11 @@ public class User extends Records<User> implements java.io.Serializable{
     
     @LastModifiedDate
     private Date lastModifiedDate;
+    
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
+    
+    public enum Rol{
+    	ADMIN, EMPLOYE, USER;
+    }
 }

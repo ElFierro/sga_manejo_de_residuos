@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import co.edu.usa.talentotech.sga.model.User;
 
+
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
 	
@@ -13,5 +14,4 @@ public interface UserRepository extends MongoRepository<User, String> {
 	boolean existsByClientId(String ClientId);
 	
 	boolean existsByClientSecret(String ClientSecret);
-
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import co.edu.usa.talentotech.sga.model.User;
 import co.edu.usa.talentotech.sga.service.ErrorService;
 import co.edu.usa.talentotech.sga.service.UserService;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
@@ -26,7 +27,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 @RestController
 @RequestMapping("/user")
 @CrossOrigin(origins = "*")
-public class UserController {
+public class UserController implements UserControllerApi{
 
     @Autowired
     private ErrorService errorService;
@@ -35,9 +36,10 @@ public class UserController {
     private UserService service;
 
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
+    
 
-
-    @PostMapping("/")
+	@Override
+	@PostMapping("/")
     public SingleResponse createUser(@RequestHeader("authorization") String token, 
             @RequestHeader("clientId") String clientId, HttpServletRequest requestData,
             @Valid @RequestBody User newUser,BindingResult bindingResult) throws ResponseDetails {
@@ -55,6 +57,7 @@ public class UserController {
         return responseUser;
     }    
 
+	@Override
     @GetMapping("/")
     public MultipleResponse fidAllUsers(@RequestHeader("authorization") String token,
             @RequestHeader("clientId") String clientId, HttpServletRequest requestData) throws ResponseDetails {
@@ -67,7 +70,7 @@ public class UserController {
         return responseUsers;
     }
 
-
+	@Override
     @GetMapping("/{id}")
     public SingleResponse getUserById(@RequestHeader("authorization") String token, 
             @RequestHeader("clientId") String clientId, @PathVariable String id) 
@@ -93,6 +96,7 @@ public class UserController {
         return responseUser;
     }    
 
+    @Override
     @PutMapping("/")
     public SingleResponse updateUser(@RequestHeader("authorization") String token, 
             @RequestHeader("clientId") String clientId, HttpServletRequest requestData,
@@ -108,19 +112,6 @@ public class UserController {
         }
         return responseUser;
     }  
-    
-    @GetMapping("/roles")
-    public MultipleResponse findAllRoles(@RequestHeader("authorization") String token, 
-            @RequestHeader("clientId") String clientId) 
-            throws ResponseDetails {
-    	MultipleResponse responseRoles = new MultipleResponse();
-        try {
-        	responseRoles = service.findAllRoles();
-        } catch (ResponseDetails e) {
-        	responseRoles.setResponseDetails(e);
-        }
-        return responseRoles;
-    }
     
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(BindException.class)
@@ -152,4 +143,5 @@ public class UserController {
       log.error(ex.toString());
       return response;
     }
+
 }
