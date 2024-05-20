@@ -36,9 +36,8 @@ public class Waste extends Records<Waste> implements java.io.Serializable{
 	private Boolean recyclable;
 	
 	@NotNull(message = ResponseMessages.ERROR_WEIGHT_REQUIRED)
-	@NotBlank(message = ResponseMessages.ERROR_WEIGHT_REQUIRED)
-	@DecimalMin(value = "0.0", inclusive = false)
-	private double weight;
+	@DecimalMin(value = "0.0", message = ResponseMessages.ERROR_WEIGHT_POSITIVE)
+	private Double weight;
 	
 	@CreatedDate
 	private Date dateAdmission;

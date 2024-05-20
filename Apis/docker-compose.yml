@@ -6,6 +6,14 @@ services:
     ports:
       - 8080:8080
     depends_on:
+      - mongodb  
+ 
+  wasteapp:
+    build: .\waste-app
+    container_name: "wasteapp-dockercompose"
+    ports:
+      - 8181:8181
+    depends_on:
       - mongodb     
   
   mongodb:

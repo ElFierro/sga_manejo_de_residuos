@@ -136,12 +136,13 @@ public class ResponseMessages {
 	
 	public static final String ERROR_NO_RECORDS= "No existen registros.";
 	
-	public static final String ERROR_VALID_ROL = "Este rol de usuario no es valido";
+	public static final String ERROR_VALID_ROL = "Este rol de usuario no es valido.";
 	public static final String ERROR_ROL_REQUIRED="Especifique el rol del usuario.";
 	
-	public static final String ERROR_TYPE_WASTE_REQUIRED ="Indique el tipo de residuo";
-	public static final String ERROR_CLASSIFICATION_REQUIRED ="La clasificacion de residuos es obligatoria";
-	public static final String ERROR_WEIGHT_REQUIRED  ="Especifique el peso";
+	public static final String ERROR_TYPE_WASTE_REQUIRED ="Indique el tipo de residuo.";
+	public static final String ERROR_CLASSIFICATION_REQUIRED ="La clasificacion de residuos es obligatoria.";
+	public static final String ERROR_WEIGHT_REQUIRED  ="Especifique el peso del residuo ingresado.";
+	public static final String ERROR_WEIGHT_POSITIVE = "El peso de los residuos debe ser un valor positivo.";
 	
     // *** STATUS *****//
 	public static enum STATUS {

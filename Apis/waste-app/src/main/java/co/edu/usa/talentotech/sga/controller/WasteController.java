@@ -22,7 +22,7 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/waste")
 @CrossOrigin(origins = "*")
-public class WasteController {
+public class WasteController implements WasteControllerApi {
 	 	@Autowired
 	    private ErrorService errorService;
 
@@ -33,11 +33,13 @@ public class WasteController {
 
 
 	    @PostMapping("/")
-	    public SingleResponse save( @RequestBody Waste waste) throws ResponseDetails {
+	    public SingleResponse saveWaste(@Valid @RequestBody Waste waste,BindingResult bindingResult) throws ResponseDetails {
 	        SingleResponse response = new SingleResponse();
-
+	        if(bindingResult.hasErrors()) {
+	        	throw new ResponseDetails(ResponseMessages.CODE_400,bindingResult.getFieldError().getDefaultMessage());
+	        }
 	        try {
-	            response = service.save(waste);
+	            response = service.saveWaste(waste);
 	        } catch (ResponseDetails e) {
 	            response.setResponseDetails(e);
 	        }
@@ -45,10 +47,10 @@ public class WasteController {
 	    } 
 	    
 	    @GetMapping("/")
-	    public MultipleResponse fidAll() throws ResponseDetails {
+	    public MultipleResponse findAllWastes(@RequestParam(required = false) String typeWaste) throws ResponseDetails {
 	        MultipleResponse response = new MultipleResponse();
 	        try {
-	            response = service.findAll();
+	            response = service.findAllWastes(typeWaste);
 	        } catch (ResponseDetails e) {
 	        	response.setResponseDetails(e);
 	        }
@@ -56,23 +58,11 @@ public class WasteController {
 	    }
 	    
 	    @GetMapping("/{id}")
-	    public SingleResponse getById( @PathVariable String id) 
+	    public SingleResponse getWasteById( @PathVariable String id) 
 	            throws ResponseDetails {
 	        SingleResponse response = new SingleResponse();
 	        try {
-	            response = service.findById(id);
-	        } catch (ResponseDetails e) {
-	        	response.setResponseDetails(e);
-	        }
-	        return response;
-	    }
-	    
-	    @GetMapping("/{typeWaste}")
-	    public SingleResponse getByTypeWaste( @PathVariable String typeWaste) 
-	            throws ResponseDetails {
-	        SingleResponse response = new SingleResponse();
-	        try {
-	            response = service.getByTypeWaste(typeWaste);
+	            response = service.findWasteById(id);
 	        } catch (ResponseDetails e) {
 	        	response.setResponseDetails(e);
 	        }
@@ -80,10 +70,10 @@ public class WasteController {
 	    }
 	    
 	    @DeleteMapping("/{id}")
-	    public SingleResponse deleteById( @PathVariable String id) throws ResponseDetails {
+	    public SingleResponse deleteWasteById( @PathVariable String id) throws ResponseDetails {
 	        SingleResponse response = new SingleResponse();
 	        try {
-	            response = service.deleteById(id);
+	            response = service.deleteWasteById(id);
 	        } catch (ResponseDetails e) {
 	            response.setResponseDetails(e);
 	        }
@@ -91,10 +81,10 @@ public class WasteController {
 	    }    
 	    
 	    @PutMapping("/")
-	    public SingleResponse update( @RequestBody Waste waste) throws ResponseDetails {
+	    public SingleResponse updateWaste( @RequestBody Waste waste) throws ResponseDetails {
 	            SingleResponse response = new SingleResponse();
 	        try {
-	            response = (SingleResponse) service.update(waste);
+	            response = (SingleResponse) service.updateWaste(waste);
 	        } catch (ResponseDetails e) {
 	            response.setResponseDetails(e);
 	        }

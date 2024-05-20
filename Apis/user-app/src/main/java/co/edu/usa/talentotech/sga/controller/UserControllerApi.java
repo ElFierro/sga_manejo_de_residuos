@@ -13,13 +13,14 @@ import co.edu.usa.sga.models.SingleResponse;
 import co.edu.usa.talentotech.sga.model.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 
-
+@Tag(name = "User", description = "Administracion de usuarios")
 public interface UserControllerApi {
 
     @Operation(summary = "Crear un nuevo usuario",

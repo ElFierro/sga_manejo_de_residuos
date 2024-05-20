@@ -4,6 +4,7 @@ import co.edu.usa.sga.models.*;
 import co.edu.usa.sga.utilities.constans.ResponseMessages;
 
 import org.springframework.stereotype.Service;
+
 import co.edu.usa.talentotech.sga.model.User;
 import co.edu.usa.talentotech.sga.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -166,7 +167,7 @@ public class UserService implements EncriptService {
 			throw e;
 		}
 	}
-
+	
 	public MultipleResponse multipleReponsUser(List<User> data, String code, String message) throws ResponseDetails {
 		MultipleResponse responseUsers = new MultipleResponse();
 		responseUsers.setData(data);
