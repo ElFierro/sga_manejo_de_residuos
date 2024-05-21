@@ -8,8 +8,8 @@ import io.swagger.v3.oas.annotations.info.Info;
 @Configuration
 @OpenAPIDefinition(
 	info = @Info(
-            title = "Microservicio para la administración de usuarios",
-            description = "Este microservicio se encarga de gestionar y registrar todos los datos de los usuarios",
+            title = "Microservicio del manejo de residuos",
+            description = "Este microservicio se encarga de administrar y registrar los datos de la recoleccion de residuos",
             version = "1.0"
            
     )
